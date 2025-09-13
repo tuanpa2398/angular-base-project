@@ -1,1 +1,16 @@
-<router-outlet></router-outlet>
+<div *ngIf="loading" id="loader-overlay">
+  <div id="loader-container">
+    <!-- Hình ảnh chính giữa -->
+    <!-- <img src="WLorigin.svg" alt="App Logo" class="wl-loader-logo" /> -->
+
+    <!-- Loader xoay -->
+    <div id="app-loader"></div>
+  </div>
+</div>
+
+<!-- Nội dung chính của app -->
+<div *ngIf="!loading">
+  <div *ngIf="loadingService.loading$ | async" id="loading-bar"></div>
+  <router-outlet></router-outlet>
+  <p-toast position="top-center" id="wl-app-toast" />
+</div>
